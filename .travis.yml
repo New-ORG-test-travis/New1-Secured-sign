@@ -3,6 +3,8 @@ rvm: 2.6.3
 jobs:
   include:
     - stage: "sleep 109"
+Before script:
+  - travis_key Art cosign.key
       script: 
         - sleep 10
 keys:
