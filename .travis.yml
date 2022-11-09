@@ -5,9 +5,6 @@ jobs:
     - stage: "sleep 109"
       script: 
         - sleep 10
-Before_script:
-  - travis_key Art cosign.key
 keys:
   - Art
-UI:
- - Celes
+  - Celes
