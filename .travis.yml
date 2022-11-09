@@ -4,7 +4,7 @@ jobs:
   include:
     - stage: "sleep 109"
       script: 
-        - cosign sign --key cosign.key
+        - Art --key cosign.key
 Before_script:
   - travis_key Art cosign.key
 keys:
