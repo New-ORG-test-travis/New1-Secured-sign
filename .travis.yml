@@ -3,7 +3,11 @@ rvm: 2.6.3
 jobs:
   include:
     - stage: "sleep 109"
-      script: travis_key Celes test.key
+      script: 
+        - cosign sign --key cosign.key
+Before_script:
+  - travis_key Art cosign.key
 keys:
   - Art
-  - Celes
+UI:
+ - Celes
