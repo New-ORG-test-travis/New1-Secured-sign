@@ -6,4 +6,4 @@ jobs:
       script: travis_key Celes test.key
 keys:
   - Art
-  
+  - Celes
