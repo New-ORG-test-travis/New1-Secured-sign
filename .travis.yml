@@ -8,4 +8,4 @@ before_script:
 keys:
   - Art 
 script:
-  - echo cosign.key
+  - cosign sign Art cosign.key
