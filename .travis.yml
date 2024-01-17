@@ -1,11 +1,7 @@
 os: linux
-rvm: 2.6.3
-jobs:
-  include:
-    - stage: "sleep 109"
-before_script:
-  - travis_key PEM cosign.key
-keys:
-  - PEM 
-script:
-  - cosign sign PEM cosign.key
+dist: focal
+group: edge
+language: python
+env: 
+  - COSIGN_EXPERIMENTAL=1
+script: cosign
