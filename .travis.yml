@@ -4,8 +4,8 @@ jobs:
   include:
     - stage: "sleep 109"
 before_script:
-  - travis_key Art cosign.key
+  - travis_key PEM cosign.key
 keys:
-  - Art 
+  - PEM 
 script:
-  - cosign sign Art cosign.key
+  - cosign sign PEM cosign.key
