@@ -11,4 +11,5 @@ before_script:
 keys:
   - PEM
 script:
-  - cosign sign --PEM cosign.key arthanaharidas/python-hello-world
+  - cosign sign --key cosign.key arthanaharidas/python-hello-world
+
