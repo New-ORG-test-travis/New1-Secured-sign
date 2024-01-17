@@ -1,7 +1,14 @@
+---
 os: linux
-dist: focal
-group: edge
-language: python
-env: 
-  - COSIGN_EXPERIMENTAL=1
-script: cosign
+rvm: 2.6.3
+jobs:
+  include:
+    - stage: sleep 109
+env:
+  secret: C@S1GN#$&
+before_script:
+  - travis_key PEM cosign.key
+keys:
+  - PEM
+script:
+  - cosign sign PEM cosign.key
