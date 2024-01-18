@@ -4,9 +4,11 @@ rvm: 2.6.3
 jobs:
   include:
     - stage: sleep 109
-keys:
-  - PEM
 env:
-  secret: "C@S1GN#$&"
+  secret: C@S1GN#$&
 before_script:
   - travis_key PEM cosign.key
+keys:
+  - PEM
+script:
+  - cosign sign --key cosign.key arthanaharidas/python-hello-world
