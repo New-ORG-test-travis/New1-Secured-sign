@@ -1,14 +1,15 @@
+---
 os: linux
 dist: focal
 group: edge
 language: python
-env: 
+env:
   - COSIGN_EXPERIMENTAL=1
 services:
   - docker
 jobs:
   include:
-    - stage: "sleep 109"
+    - stage: sleep 109
       script:
         - echo arthanaharidas
         - docker login -u "arthanaharidas" -p "${DOCKER_HUB_PASSWORD}"
@@ -19,6 +20,5 @@ jobs:
         - cosign sign --key cosign.key arthanaharidas/python-hello-world
         - cosign verify --key cosign.pub arthanaharidas/python-hello-world
         - docker logout
- 
 keys:
   - PEM
