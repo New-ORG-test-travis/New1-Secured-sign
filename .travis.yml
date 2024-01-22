@@ -1,14 +1,24 @@
----
 os: linux
-rvm: 2.6.3
+dist: focal
+group: edge
+language: python
+env: 
+  - COSIGN_EXPERIMENTAL=1
+services:
+  - docker
 jobs:
   include:
-    - stage: sleep 109
+    - stage: "sleep 109"
+      script:
+        - echo arthanaharidas
+        - docker login -u "arthanaharidas" -p "${DOCKER_HUB_PASSWORD}"
+        - docker build -t hello-world-python .
+        - docker tag hello-world-python arthanaharidas/python-hello-world
+        - docker push arthanaharidas/python-hello-world
+        - export COSIGN_PASSWORD="${COS_PASSWORD}"
+        - cosign sign --key cosign.key arthanaharidas/python-hello-world
+        - cosign verify --key cosign.pub arthanaharidas/python-hello-world
+        - docker logout
+ 
 keys:
   - PEM
-env:
-  secret: cosign.key
-before_script:
-  - travis_key PEM cosign.key
-script:
-  - cosign sign --key cosign.key arthanaharidas/python-hello-world
